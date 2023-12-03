@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  username: postgres
+  password: secret
+
+development:
+  <<: *default
+  database: url_shortener_development
+
+test:
+  <<: *default
+  database: url_shortener_test
+
+production:
+  <<: *default
+  database: url_shortener_production
+  username: url_shortener
+  password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
