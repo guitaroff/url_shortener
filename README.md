@@ -1,24 +1,25 @@
-# README
+# Сервис сокращения ссылок
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Зависимости
+* Ruby 2.7.3
+* Rails 6.1.7
+* PostgreSQL 12+
 
-Things you may want to cover:
+#### Создание короткой ссылки:
 
-* Ruby version
+```
+# запрос:
+POST 0.0.0.0:3000/urls
+# параметры
+{
+  "url": {
+    "original_url": "https://example_url.com"
+  }
+}
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# ответ:
+{
+  "original_url": "https://example_url.com",
+  "short_url": "ytmfk5"
+}
+```
