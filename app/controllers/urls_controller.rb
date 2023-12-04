@@ -6,10 +6,7 @@ class UrlsController < ApplicationController
     url = ShortenedUrl.new(original_url: url_params[:original_url])
     url.save!
 
-    render json: {
-      original_url: url.original_url,
-      short_url: url.short_url
-    }, status: 201
+    render json: { short_url: url.short_url }, status: 201
   end
 
   # GET /urls/short_url/stats
@@ -22,12 +19,7 @@ class UrlsController < ApplicationController
     ShortenedUrl.update_counters(@url.id, view_count: 1)
     @url.reload
 
-    url_info = {
-      original_url: @url.original_url,
-      short_url: @url.short_url
-    }
-
-    render json: url_info
+    render json: { original_url: @url.original_url }
   end
 
   private
